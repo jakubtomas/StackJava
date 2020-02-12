@@ -1,5 +1,6 @@
 package sk.itsovy.tomas.stack;
 
+import org.w3c.dom.ls.LSOutput;
 import sk.itsovy.tomas.exception.StackOverFlowException;
 import sk.itsovy.tomas.exception.StackUnderFlowException;
 
@@ -20,6 +21,14 @@ public class Stack<T> {
         list = new ArrayList<>();
 
     }
+
+
+    /* Zasobnik  knih  kde ukladas na seba knihy a vyberas poslednu
+    pridanu knihu do zasobnika
+    *
+    * osetrit  keby som vytvoril array list s minusovim cislom
+    *
+    * */
 
     public int getCapacity() {
         return capacity;
@@ -46,7 +55,7 @@ public class Stack<T> {
         else throw new StackOverFlowException("Stack is full  okey !");
     }
 
-    public void pop() throws StackUnderFlowException {
+    public void pop() throws StackUnderFlowException { // remove last value what we add
         if (isEmpty()) throw new StackUnderFlowException("Stack is empty  prazdne !");
         else {
             size--;
@@ -54,7 +63,7 @@ public class Stack<T> {
         }
     }
 
-    public T top() {
+    public T top() { // posledna pridana hodnota
         if (isEmpty()) return null; // intresting
         else {
             return list.get(size-1);
@@ -69,6 +78,16 @@ public class Stack<T> {
 
     public void empty() {
         list.clear();
+    }
+
+    public void printStack() {
+        System.out.print("(");
+        for (T t:list) {
+            System.out.print(" " + t + ",");
+
+        }
+        System.out.print(" ) ");
+
     }
 
 
